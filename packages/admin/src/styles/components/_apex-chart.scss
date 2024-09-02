@@ -1,0 +1,13 @@
+.apexcharts-tooltip {
+  box-shadow: none !important;
+
+  &.apexcharts-theme-dark {
+    background: rgba(30,30,30,1) !important;
+  }
+}
+
+.apexcharts-xcrosshairs {
+  &.apexcharts-active{
+    opacity: 0 !important;
+  }
+}

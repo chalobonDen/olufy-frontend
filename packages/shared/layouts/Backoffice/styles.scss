@@ -1,0 +1,167 @@
+@use 'sass:selector';
+
+.backoffice {
+  &-layout {
+    --backoffice-bar-height: 71px;
+
+    @apply flex w-full overflow-hidden h-screen;
+  }
+
+  &-content {
+    @apply flex-1 grid;
+
+    grid-template-rows: 71px 1fr;
+
+    main {
+      @apply z-0 overflow-x-hidden px-6 pb-14 pt-6 w-full;
+    }
+  }
+
+  &-navbar {
+    @apply z-10 flex items-center justify-between px-6 shadow-01;
+
+    height: var(--backoffice-bar-height);
+
+    @at-root .dark & {
+      @apply bg-dark-400 shadow-lg;
+    }
+
+    &-left {
+      @apply hidden;
+    }
+
+    &-right {
+      @apply ml-auto flex items-center space-x-4;
+    }
+  }
+
+  &-sidebar {
+    @apply z-50 flex flex-col bg-dark-400;
+
+    width: 252px;
+    // min-width: 252px;
+
+    @at-root .dark & {
+      box-shadow: 0.25rem 0 0.75rem theme('colors.dark.500 / 70%');
+    }
+
+    &-logo {
+      @apply flex items-center justify-center;
+
+      height: var(--backoffice-bar-height);
+    }
+
+    &-menus {
+      @apply flex-1 overflow-x-auto scroll-smooth;
+
+      &::-webkit-scrollbar-thumb {
+        background-color: theme('colors.dark.200');
+
+        @at-root .dark & {
+          background-color: theme('colors.dark.300');
+        }
+      }
+    }
+
+    &-menu,
+    &-submenu {
+      @apply text-white-800;
+
+      &-link {
+        @apply flex h-12 w-full cursor-pointer items-center px-4;
+
+        &:hover {
+          @apply bg-primary-500/10;
+        }
+
+        svg {
+          @apply square-6;
+        }
+
+        span {
+          @apply ml-2;
+        }
+
+        &.active {
+          @apply text-primary-500;
+        }
+
+        .menu-caret {
+          @apply ml-auto transition-transform square-4;
+        }
+      }
+    }
+
+    .backoffice-sidebar-menu-link.root-active {
+      @apply bg-primary-500 text-white-900;
+    }
+
+    &-menu:has(.backoffice-sidebar-menu-link[aria-expanded='true']) {
+      .menu-caret {
+        @apply -rotate-90;
+      }
+    }
+
+    &-submenu {
+      &-link {
+        &::before {
+          @apply block square-6;
+
+          content: '';
+        }
+      }
+    }
+
+    &-overlay {
+      @apply fixed inset-0 z-20 hidden bg-dark-500/20;
+    }
+
+    &-footer {
+      @apply py-6 px-4;
+
+      .dropdown .dropdown-caret-icon {
+        @apply text-white-900
+      }
+    }
+  }
+}
+
+@screen lg {
+  .backoffice {
+    &-sidebar {
+      @apply fixed z-20 h-full -translate-x-full transition-transform duration-200 ease-in-out;
+
+      &:not(.active) {
+        @apply shadow-none;
+      }
+
+      &.active {
+        @apply translate-x-0;
+      }
+
+      &-overlay {
+        &.active {
+          @apply block;
+        }
+      }
+    }
+
+    &-content {
+      main {
+        @apply px-4;
+      }
+    }
+
+    &-navbar {
+      @apply px-4;
+
+      &-left {
+        @apply flex;
+      }
+
+      &-menu-icon {
+        @apply square-8;
+      }
+    }
+  }
+}

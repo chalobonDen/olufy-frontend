@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    "macros",
+    "@babel/plugin-syntax-jsx",
+    "@babel/plugin-syntax-flow"
+  ],
+  "presets": [
+    "@babel/preset-react",
+    "@babel/preset-flow",
+    "@babel/preset-typescript"
+  ]
+}

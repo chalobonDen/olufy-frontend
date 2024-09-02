@@ -1,0 +1,39 @@
+@use 'sass:selector';
+
+@layer components {
+  .placeholder {
+    @apply relative;
+
+    &::after {
+      content: '';
+      background-image: linear-gradient(to right, theme('colors.white.300'), #e0e0e0, theme('colors.white.300'));
+      border-radius: 8px;
+      display: inline-block;
+      line-height: 1;
+      width: 100%;
+      animation: 1.2s ease-in-out 0s infinite normal none running placeholder;
+      background-color: theme('colors.white.300');
+      background-size: 200px 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      inset: 0px;
+      z-index: 10;
+    }
+
+    @at-root .dark & {
+      &::after {
+        background-image: linear-gradient(to right, theme('colors.dark.300'), #333439, theme('colors.dark.300'));
+        background-color: theme('colors.dark.300');
+      }
+    }
+  }
+
+  @keyframes placeholder {
+    0% {
+      background-position: -200px 0px;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0px;
+    }
+  }
+}

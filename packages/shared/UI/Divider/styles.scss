@@ -1,0 +1,41 @@
+.divider {
+  @apply bg-white-700;
+
+  &-text {
+    @apply flex items-center;
+
+    &::before,
+    &::after {
+      @apply relative w-1/2 bg-white-700;
+
+      content: '';
+      height: 1px;
+    }
+
+    span {
+      @apply px-2 text-body-14;
+    }
+  }
+
+  &-type {
+    &-vertical {
+      @apply h-full;
+
+      width: 1px;
+    }
+
+    &-horizontal {
+      @apply w-full;
+
+      height: 1px;
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .divider,
+  .divider-text::before,
+  .divider-text::after {
+    @apply bg-dark-300;
+  }
+}

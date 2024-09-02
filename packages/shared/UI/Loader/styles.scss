@@ -1,0 +1,11 @@
+.loader {
+  @apply text-primary-500;
+
+  .loader-icon {
+    @apply animate-spin;
+
+    font-size: 1em;
+    width: 1em;
+    height: 1em;
+  }
+}

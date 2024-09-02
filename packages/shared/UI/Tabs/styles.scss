@@ -1,0 +1,41 @@
+@use 'sass:selector';
+
+.tabs-list {
+  @apply border-b border-white-300;
+
+  @at-root .dark & {
+    @apply border-dark-300;
+  }
+
+  .tabs-trigger {
+    @apply px-4 pb-3 pt-2 text-dark-200 outline-none relative;
+
+    &::after {
+      @apply absolute left-0 w-full bg-dark-500 opacity-0;
+
+      content: '';
+      height: 2px;
+      bottom: -1px;
+    }
+
+    @at-root .dark & {
+      @apply text-white-800;
+
+      &::after {
+        @apply bg-white-900;
+      }
+    }
+
+    &-selected {
+      @apply text-dark-500;
+
+      @at-root .dark & {
+        @apply text-white-900;
+      }
+
+      &::after {
+        @apply opacity-100;
+      }
+    }
+  }
+}

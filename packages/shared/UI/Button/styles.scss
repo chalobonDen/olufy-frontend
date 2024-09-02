@@ -1,0 +1,502 @@
+@use 'sass:selector';
+
+@mixin button-color($bg-color, $border-color, $text-color) {
+  background-color: $bg-color;
+
+  @if $text-color {
+    color: $text-color;
+  }
+
+  &::after {
+    border-color: $border-color;
+  }
+}
+
+@mixin button-variant(
+  $bg-color,
+  $border-color,
+  $text-color,
+  $active-bg-color,
+  $active-border-color,
+  $activeTextColor: $text-color
+) {
+  @include button-color($bg-color, $border-color, $text-color);
+
+  &:not(:disabled) {
+    &:active,
+    &.active {
+      @include button-color($active-bg-color, $active-border-color, $activeTextColor);
+    }
+
+    @media (hover: hover) {
+      &:hover:not(.no-hover) {
+        @include button-color($active-bg-color, $active-border-color, $activeTextColor);
+      }
+    }
+  }
+}
+
+@mixin button-rounder($key, $size) {
+  &#{selector-append(&, '-rounder-#{$key}')} {
+    border-radius: $size;
+
+    &::after {
+      border-radius: $size;
+    }
+  }
+}
+
+.button {
+  @apply relative z-10 inline-flex items-center justify-center overflow-hidden outline-none transition;
+
+  min-height: 48px;
+
+  &::after {
+    @apply pointer-events-none absolute inset-0 border border-transparent transition;
+
+    content: '';
+  }
+
+  &.default {
+    &.button-outline {
+      &::after {
+        @apply border-dark-500;
+      }
+
+      &:hover {
+        @apply bg-dark-500 text-white-900;
+      }
+    }
+  }
+
+  &.primary {
+    @apply bg-gradient-primary text-white-900;
+
+    &.is-dropdown-icon {
+      @apply border-l-pink-300;
+    }
+
+    &.button-outline {
+      @apply bg-transparent text-primary-500;
+
+      background-image: none;
+
+      &::after {
+        @apply border-primary-500;
+      }
+    }
+
+    &:not(:disabled) {
+      &:active:not(.no-hover) {
+        @apply border-pink-600 bg-pink-600;
+
+        &.is-dropdown-icon {
+          @apply border-l-pink-300;
+        }
+
+        &.button-outline {
+          @apply bg-gradient-primary bg-transparent text-white-900;
+
+          &::after {
+            @apply border-none;
+          }
+        }
+      }
+
+      @media (hover: hover) {
+        &:hover:not(.no-hover) {
+          @apply border-pink-600 bg-pink-600;
+
+          &.is-dropdown-icon {
+            @apply border-l-pink-300;
+          }
+
+          &.button-outline {
+            @apply bg-gradient-primary bg-transparent text-white-900;
+
+            &::after {
+              @apply border-none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.primary-solid {
+    @include button-variant(
+      theme('colors.primary.500'),
+      theme('colors.primary.500'),
+      theme('colors.white.900'),
+      theme('colors.primary.500 / 75%'),
+      theme('colors.primary.500 / 75%'),
+      theme('colors.white.900')
+    );
+
+    &.button-outline {
+      @include button-variant(
+        theme('colors.white.900'),
+        theme('colors.primary.500'),
+        theme('colors.primary.500'),
+        theme('colors.primary.500'),
+        theme('colors.primary.500'),
+        theme('colors.white.900')
+      );
+
+      @at-root .dark & {
+        @include button-variant(
+          theme('colors.dark.500 / 0%'),
+          theme('colors.primary.500'),
+          theme('colors.primary.500'),
+          theme('colors.primary.500'),
+          theme('colors.primary.500'),
+          theme('colors.white.900')
+        );
+      }
+    }
+
+    &.button-invert {
+      @include button-variant(
+        theme('colors.primary.500 / 10%'),
+        theme('colors.primary.500 / 0%'),
+        theme('colors.primary.500'),
+        theme('colors.primary.500'),
+        theme('colors.primary.500'),
+        theme('colors.white.900')
+      );
+    }
+  }
+
+  &.success {
+    @include button-variant(
+      theme('colors.success'),
+      theme('colors.success'),
+      theme('colors.white.900'),
+      theme('colors.success / 75%'),
+      theme('colors.success / 75%'),
+      theme('colors.white.900')
+    );
+
+    &.button-outline {
+      @include button-variant(
+        // theme('colors.white.600'),
+        theme('colors.success / 10%'),
+        theme('colors.success'),
+        theme('colors.success'),
+        theme('colors.success'),
+        theme('colors.success'),
+        theme('colors.white.900')
+      );
+    }
+
+    &.button-invert {
+      @include button-variant(
+        theme('colors.success / 10%'),
+        theme('colors.success / 0%'),
+        theme('colors.success'),
+        theme('colors.success'),
+        theme('colors.success'),
+        theme('colors.white.900')
+      );
+    }
+  }
+
+  &.error {
+    @include button-variant(
+      theme('colors.error'),
+      theme('colors.error'),
+      theme('colors.white.900'),
+      theme('colors.error / 75%'),
+      theme('colors.error / 75%'),
+      theme('colors.white.900')
+    );
+
+    &.button-outline {
+      @include button-variant(
+        theme('colors.error / 10%'),
+        theme('colors.error'),
+        theme('colors.error'),
+        theme('colors.error'),
+        theme('colors.error'),
+        theme('colors.white.900')
+      );
+    }
+
+    &.button-invert {
+      @include button-variant(
+        theme('colors.error / 10%'),
+        theme('colors.error / 0%'),
+        theme('colors.error'),
+        theme('colors.error'),
+        theme('colors.error'),
+        theme('colors.white.900')
+      );
+    }
+  }
+
+  &.info {
+    @include button-variant(
+      theme('colors.info'),
+      theme('colors.info'),
+      theme('colors.white.900'),
+      theme('colors.info / 75%'),
+      theme('colors.info / 75%'),
+      theme('colors.white.900')
+    );
+
+    &.button-outline {
+      @include button-variant(
+        theme('colors.info / 10%'),
+        theme('colors.info'),
+        theme('colors.info'),
+        theme('colors.info'),
+        theme('colors.info'),
+        theme('colors.white.900')
+      );
+    }
+
+    &.button-invert {
+      @include button-variant(
+        theme('colors.info / 10%'),
+        theme('colors.info / 0%'),
+        theme('colors.info'),
+        theme('colors.info'),
+        theme('colors.info'),
+        theme('colors.white.900')
+      );
+    }
+  }
+
+  &.warning {
+    @include button-variant(
+      theme('colors.warning'),
+      theme('colors.warning'),
+      theme('colors.white.900'),
+      theme('colors.warning / 75%'),
+      theme('colors.warning / 75%'),
+      theme('colors.white.900')
+    );
+
+    &.button-outline {
+      @include button-variant(
+        theme('colors.warning / 10%'),
+        theme('colors.warning'),
+        theme('colors.warning'),
+        theme('colors.warning'),
+        theme('colors.warning'),
+        theme('colors.white.900')
+      );
+    }
+
+    &.button-invert {
+      @include button-variant(
+        theme('colors.warning / 10%'),
+        theme('colors.warning / 0%'),
+        theme('colors.warning'),
+        theme('colors.warning'),
+        theme('colors.warning'),
+        theme('colors.white.900')
+      );
+    }
+  }
+
+  &.danger {
+    @include button-variant(
+      theme('colors.red.500'),
+      theme('colors.red.500'),
+      theme('colors.white.900'),
+      theme('colors.red.500 / 75%'),
+      theme('colors.red.500 / 75%'),
+      theme('colors.white.900')
+    );
+
+    &.button-outline {
+      @include button-variant(
+        theme('colors.red.500 / 10%'),
+        theme('colors.red.500'),
+        theme('colors.red.500'),
+        theme('colors.red.500'),
+        theme('colors.red.500'),
+        theme('colors.white.900')
+      );
+    }
+
+    &.button-invert {
+      @include button-variant(
+        theme('colors.red.500 / 10%'),
+        theme('colors.red.500 / 0%'),
+        theme('colors.red.500'),
+        theme('colors.red.500'),
+        theme('colors.red.500'),
+        theme('colors.white.900')
+      );
+    }
+  }
+
+  &.purple {
+    @include button-variant(
+      theme('colors.purple.500'),
+      theme('colors.purple.500'),
+      theme('colors.white.900'),
+      theme('colors.purple.500 / 75%'),
+      theme('colors.purple.500 / 75%'),
+      theme('colors.white.900')
+    );
+
+    &.button-outline {
+      @include button-variant(
+        theme('colors.purple.500 / 10%'),
+        theme('colors.purple.500'),
+        theme('colors.purple.500'),
+        theme('colors.purple.500'),
+        theme('colors.purple.500'),
+        theme('colors.white.900')
+      );
+    }
+
+    &.button-invert {
+      @include button-variant(
+        theme('colors.purple.500 / 10%'),
+        theme('colors.purple.500 / 0%'),
+        theme('colors.purple.500'),
+        theme('colors.purple.500'),
+        theme('colors.purple.500'),
+        theme('colors.white.900')
+      );
+    }
+  }
+
+  @include button-rounder('default', theme('spacing.1'));
+  @include button-rounder('sm', theme('spacing[0.5]'));
+  @include button-rounder('lg', theme('spacing[2]'));
+  @include button-rounder('xl', theme('spacing[3]'));
+  @include button-rounder('2xl', theme('spacing[4]'));
+  @include button-rounder('3xl', theme('spacing[6]'));
+  @include button-rounder('full', 9999px);
+  @include button-rounder('none', 0px);
+
+  /* DEFAULT */
+  &.button-type-default {
+    @apply px-8;
+  }
+  &.button-type-icon-text {
+    @apply inline-flex items-center space-x-2 pl-4 pr-6;
+  }
+  &.button-type-icon {
+    @apply inline-flex items-center justify-center square-12;
+  }
+  &.button-type-default,
+  &.button-type-icon-text {
+    @apply text-body-16 font-normal;
+  }
+  &.button-type-icon-text,
+  &.button-type-icon {
+    svg {
+      @apply square-6;
+    }
+  }
+  &.button-type-pic-text {
+    @apply pl-3 pr-5;
+  }
+  &.button-type-dropdown-button {
+    @apply rounded-l-lg rounded-r-none pl-6 pr-4;
+
+    &::after {
+      @apply rounded-l-lg rounded-r-none;
+    }
+  }
+  &.is-dropdown-icon {
+    @apply rounded-l-none rounded-r-lg border-l px-3;
+  }
+
+  /* MEDIUM */
+  &.button-size-medium {
+    min-height: 40px;
+
+    &.button-type-default {
+      @apply px-4;
+    }
+    &.button-type-icon-text {
+      @apply pl-3 pr-4;
+    }
+    &.button-type-default,
+    &.button-type-icon-text {
+      @apply text-body-16 font-normal;
+    }
+    &.button-type-icon {
+      @apply square-10;
+    }
+    &.button-type-icon-text,
+    &.button-type-icon {
+      svg {
+        @apply square-6;
+      }
+    }
+  }
+
+  /* SMALL */
+  &.button-size-small {
+    min-height: 32px;
+
+    &.button-type-default {
+      @apply px-4;
+    }
+    &.button-type-icon-text {
+      @apply pl-3 pr-4;
+    }
+    &.button-type-default,
+    &.button-type-icon-text {
+      @apply text-body-14 font-normal;
+    }
+    &.button-type-icon {
+      @apply square-8;
+    }
+    &.button-type-icon-text,
+    &.button-type-icon {
+      svg {
+        @apply square-6;
+      }
+    }
+  }
+
+  &.button-loading {
+    .loader-icon {
+      @apply absolute animate-spin opacity-100 square-6;
+    }
+
+    &.button-size-small {
+      .loader-icon {
+        @apply square-5;
+      }
+    }
+
+    > *:not(.loader-icon) {
+      @apply pointer-events-none opacity-0;
+    }
+
+    &:disabled {
+      @apply opacity-80;
+    }
+  }
+
+  &:disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+}
+
+// Dark Mode
+[data-theme='dark'] {
+  .button {
+    &.default {
+      &.button-outline {
+        &::after {
+          @apply border-white-900;
+        }
+
+        &:hover {
+          @apply bg-white-900 text-dark-500;
+        }
+      }
+    }
+  }
+}

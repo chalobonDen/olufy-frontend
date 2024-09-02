@@ -1,0 +1,14 @@
+.swiper {
+  .swiper-free-mode {
+    transition-timing-function: linear;
+  }
+}
+
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  .swiper-pagination-bullet {
+    @apply bg-primary-500;
+
+    width: 10px;
+    height: 10px;
+  }
+}

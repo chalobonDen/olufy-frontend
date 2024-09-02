@@ -1,0 +1,12 @@
+@layer components {
+  .user-card {
+    @apply rounded-lg bg-white-900 p-4 shadow-01;
+  }
+
+  // Dark Mode
+  [data-theme='dark'] {
+    .user-card {
+      @apply bg-dark-400;
+    }
+  }
+}

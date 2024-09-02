@@ -1,0 +1,14 @@
+@import '@fontsource/kanit/300.css';
+@import '@fontsource/kanit/400.css';
+@import '@fontsource/kanit/500.css';
+@import '@fontsource/kanit/600.css';
+
+@tailwind base;
+@import './base/root';
+@import './base/layout';
+@import './base/typography';
+
+@tailwind components;
+@import './components/mdx';
+
+@tailwind utilities;

@@ -1,0 +1,52 @@
+import ComponentPreview from '@/components/ComponentPreview'
+
+export const documentProps = {
+  title: 'Button',
+  description: 'Displays a button or a component that looks like a button.',
+}
+
+<ComponentPreview name="button-demo" />
+
+## Usage
+
+```tsx
+import { Button } from '@olufy-frontend/shared/UI'
+```
+
+```tsx
+<Button variant="primary">Button</Button>
+```
+
+## Link
+
+Default tag HTML ของ `Button` คือ button ถ้าเราอยากได้เป็น tag a หรือ anchor จะต้องใช้ `as="a"` จากนั้นถึงจะสามารถใช้ href ได้
+
+```tsx
+<Button as="a" href="/home" variant="primary">
+  Link
+</Button>
+```
+
+## Examples
+
+### type: `default`
+
+<ComponentPreview name="button-type-default" />
+
+### type: `icon-text`
+
+<ComponentPreview name="button-type-icon-text" />
+
+### type: `icon`
+
+<ComponentPreview name="button-type-icon" />
+
+## API
+
+| Property  | Description                                               | Type                                                                                     | Default   |
+| --------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------- | --------- |
+| type      | Set button style type                                     | `default` `icon-text` `icon` `pic-text` `dropdown-button` `dropdown-icon`                | `default` |
+| variant   | Set button variant                                        | `default` `primary` `success` `error` `info` `warning` `primary-solid` `danger` `purple` | `default` |
+| isOutline | Set button to outline, don't use together with `isInvert` | boolean                                                                                  | false     |
+| isInvert  | Set button to invert, don't use together with `isOutline` | boolean                                                                                  | false     |
+| size      | Set the size of button                                    | `default` `medium` `small`                                                               | `default` |

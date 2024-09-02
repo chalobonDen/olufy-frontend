@@ -1,0 +1,52 @@
+@layer base {
+  html {
+    body {
+      @apply font-kanit font-normal;
+    }
+  }
+
+  strong {
+    @apply font-medium;
+  }
+
+  .desc {
+    @apply text-dark-200;
+  }
+
+  .text-content {
+    @apply font-light;
+
+    > * {
+      @apply mt-4;
+
+      &:first-child {
+        @apply mt-0;
+      }
+    }
+
+    h2 {
+      @apply text-header-2;
+    }
+
+    h4 {
+      @apply text-header-4;
+    }
+
+    a {
+      @apply text-header-5
+    }
+
+    ul {
+      li {
+        @apply list-inside list-disc;
+      }
+    }
+  }
+
+  // Dark Mode
+  [data-theme='dark'] {
+    .desc {
+      @apply text-white-500;
+    }
+  }
+}

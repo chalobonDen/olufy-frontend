@@ -1,0 +1,11 @@
+.logo {
+  @apply flex items-center space-x-2;
+
+  &-img {
+    @apply square-12;
+  }
+
+  &-text {
+    width: 63px;
+  }
+}

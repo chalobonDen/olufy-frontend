@@ -1,0 +1,58 @@
+.popover {
+  @apply relative inline-block;
+
+  .popover-caret-icon {
+    width: 1em;
+    height: 1em;
+  }
+
+  .popover-button {
+    @apply flex items-center space-x-1;
+
+    &:hover {
+      @apply transition-opacity hover:opacity-75;
+    }
+  }
+
+  .popover-dialog {
+    // @apply absolute z-10 mt-2 rounded-lg bg-white-900 shadow-01 p-4 border border-white-700;
+    @apply mt-2 rounded-lg border border-white-700 bg-white-900 p-4 shadow-01;
+
+    // &-start {
+    //   @apply left-0;
+    // }
+
+    // &-end {
+    //   @apply right-0;
+    // }
+  }
+
+  .popover-dialog-transition {
+    @apply scale-95 opacity-0;
+  }
+
+  &-transition-enter {
+    @apply transition duration-200 ease-out;
+  }
+  &-transition-enter-form,
+  &-transition-leave-to {
+    @apply scale-95 opacity-0;
+  }
+  &-transition-enter-to,
+  &-transition-leave-form {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  &-transition-leave {
+    @apply transition duration-150 ease-in;
+  }
+}
+
+// Dark Mode
+[data-theme='dark'] {
+  .popover {
+    .popover-dialog {
+      @apply border-dark-300 bg-dark-400 shadow-02;
+    }
+  }
+}

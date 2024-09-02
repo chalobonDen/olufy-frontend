@@ -1,0 +1,76 @@
+.theme_turquoise {
+  --cc-bg: theme('colors.white.900');
+  --cc-text: theme('colors.dark.500');
+
+  --cc-btn-primary-bg: theme('colors.primary.500');
+  --cc-btn-primary-border: theme('colors.primary.500');
+  --cc-btn-primary-text: theme('colors.white.900');
+  --cc-btn-primary-hover-text: theme('colors.white.900');
+  --cc-btn-primary-hover-bg: theme('colors.primary.500 / 80%');
+  --cc-btn-primary-hover-border: var(--cc-btn-primary-hover-bg);
+
+  --cc-btn-secondary-bg: theme('colors.white.900');
+  --cc-btn-secondary-border: theme('colors.dark.500');
+  --cc-btn-secondary-text: var(--cc-text);
+  --cc-btn-secondary-hover-text: theme('colors.white.900');
+  --cc-btn-secondary-hover-bg: var(--cc-btn-secondary-border);
+  --cc-btn-secondary-hover-border: var(--cc-btn-secondary-border);
+
+  --cc-toggle-bg-off: #667481;
+  --cc-toggle-bg-on: theme('colors.success');
+  --cc-toggle-bg-readonly: theme(colors.white.400);
+  --cc-toggle-knob-bg: theme('colors.white.900');
+  --cc-toggle-knob-icon-color: var(--cc-bg);
+
+  --cc-cookie-category-block-bg: theme('colors.white.600');
+  --cc-cookie-category-block-bg-hover: theme('colors.white.700');
+
+  --cc-section-border: theme('colors.white.900');
+  --cc-block-text: var(--cc-text);
+
+  --cc-cookie-table-border: #2b3035;
+  --cc-overlay-bg: rgba(4, 6, 8, 0.85);
+  --cc-webkit-scrollbar-bg: #2c343a;
+  --cc-webkit-scrollbar-bg-hover: #384148;
+  --cc-font-family: theme('fontFamily.kanit');
+  --cc-btn-border-radius: theme('borderRadius.lg');
+
+  .cc_div #c-s-bn,
+  #s-sv-bn {
+    @apply border border-solid;
+
+    border-color: var(--cc-btn-secondary-border);
+
+    &:first-child {
+      border-color: var(--cc-btn-primary-border);
+    }
+  }
+
+  #s-c-bn:hover {
+    background: var(--cc-cookie-category-block-bg);
+  }
+}
+
+// Dark Mode
+[data-theme='dark'] {
+  .theme_turquoise {
+    --cc-bg: theme('colors.dark.500');
+    --cc-text: theme('colors.white.900');
+
+    --cc-btn-secondary-bg: theme('colors.dark.400');
+    --cc-btn-secondary-text: theme('colors.white.900');
+    --cc-btn-secondary-hover-bg: theme('colors.dark.200');
+
+    --cc-cookie-category-block-bg: theme('colors.dark.400');
+    --cc-cookie-category-block-bg-hover: theme('colors.dark.300');
+
+    --cc-toggle-knob-icon-color: theme('colors.white.900');
+    --cc-section-border: theme('colors.dark.500');
+  }
+
+  #cc--main #cm,
+  #cc--main #s-cnt,
+  #cc--main #s-inr {
+    box-shadow: 0 0 4rem theme('colors.white.500 / 10%');
+  }
+}

@@ -1,0 +1,190 @@
+label {
+  @apply cursor-pointer;
+}
+
+input,
+textarea,
+select {
+  @apply bg-transparent;
+
+  &:focus {
+    @apply outline-none;
+  }
+
+  &::placeholder {
+    @apply font-light text-white-800 #{!important};
+  }
+
+  &[type='checkbox'],
+  &[type='radio'] {
+    @apply rounded border-2 border-primary-500;
+
+    print-color-adjust: exact;
+    appearance: none;
+    background-origin: border-box;
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 0;
+    user-select: none;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+
+    &:checked {
+      background-color: currentColor;
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      border-color: transparent;
+    }
+  }
+
+  &[type='checkbox'] {
+    &:checked {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z'/%3E%3C/svg%3E");
+    }
+  }
+
+  &[type='radio'] {
+    @apply cursor-pointer rounded-full border-none bg-transparent bg-contain;
+
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_2653_5905)'%3E%3Crect width='16' height='16' rx='8' fill='white'/%3E%3Crect x='1' y='1' width='14' height='14' rx='7' stroke='%230E1113' stroke-width='2'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_2653_5905'%3E%3Crect width='16' height='16' rx='8' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+
+    &:checked {
+      @apply text-transparent;
+
+      background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_2653_5996)'%3E%3Crect width='16' height='16' rx='8' fill='white'/%3E%3Crect x='4' y='4' width='8' height='8' rx='4' fill='%23F44D29'/%3E%3Crect x='1' y='1' width='14' height='14' rx='7' stroke='%23F44D29' stroke-width='2'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_2653_5996'%3E%3Crect width='16' height='16' rx='8' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    }
+  }
+}
+
+.input {
+  @apply relative flex items-center space-x-2 rounded-lg border border-white-300 bg-white-900 px-2;
+
+  input,
+  textarea,
+  select {
+    @apply rounded-lg;
+  }
+
+  input,
+  select {
+    @apply w-full flex-1 py-2 font-light;
+  }
+
+  &:has(input:focus) {
+    @apply border-primary-400;
+  }
+
+  &.textarea,
+  textarea {
+    min-height: 80px;
+  }
+
+  textarea {
+    @apply w-full py-2 font-light;
+  }
+
+  &.is-invalid,
+  &.is-invalid.textarea {
+    @apply border-error #{!important};
+  }
+
+  &-invalid-message {
+    @apply mt-1 block text-body-14 text-error first-letter:uppercase;
+  }
+
+  &-display-characters {
+    @apply mt-2 inline-block text-body-14;
+  }
+
+  &:has(input:disabled),
+  &:has(select:disabled),
+  &:has(textarea:disabled),
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    @apply cursor-not-allowed border-white-600 bg-white-600 resize-none;
+  }
+
+  input[type='color'] {
+    @apply h-10 py-1;
+
+    &::-webkit-color-swatch {
+      @apply border-none;
+    }
+  }
+}
+
+.autocomplete-wrapper {
+  @apply relative;
+
+  .input {
+    & ~ div {
+      @apply w-full;
+
+      ul {
+        @apply overflow-x-auto rounded-lg border border-white-700 bg-white-900 p-2;
+
+        max-height: 320px;
+
+        > li {
+          @apply relative flex min-h-[48px] cursor-pointer items-center space-x-3 rounded-lg px-4 py-2;
+
+          &:not(.no-hover):not(.active):hover {
+            @apply bg-white-700/70;
+          }
+
+          &.active {
+            @apply bg-white-700;
+          }
+        }
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .input:not(.no-dark) {
+    @apply border-dark-300 bg-dark-500 text-white-900;
+
+    &:has(input:disabled),
+    &:has(select:disabled),
+    input:disabled,
+    select:disabled, {
+      @apply cursor-not-allowed border-dark-300 bg-dark-300;
+    }
+  }
+
+  .autocomplete-wrapper {
+    .input {
+      & ~ div {
+        ul {
+          @apply border-dark-300 bg-dark-400 shadow-02;
+
+          > li {
+            &:not(.no-hover):not(.active):hover {
+              @apply bg-dark-300/70;
+            }
+
+            &.active {
+              @apply bg-dark-300;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  option {
+    @apply bg-dark-400;
+  }
+
+  input,
+  textarea,
+  select {
+    &::placeholder {
+      @apply text-dark-200 #{!important};
+    }
+  }
+}

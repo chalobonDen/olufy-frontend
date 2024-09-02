@@ -1,0 +1,126 @@
+.card {
+  @apply rounded-lg bg-white-900 p-4 shadow-01;
+
+  &.has-divider {
+    .divider {
+      @apply my-4;
+    }
+  }
+
+  .card-header {
+    @apply flex items-center justify-between;
+
+    h3 {
+      @apply text-header-3;
+    }
+  }
+
+  &-statistic {
+    @apply flex items-center;
+
+    &-info {
+      @apply flex flex-1 flex-col space-y-2;
+    }
+
+    &-title {
+      @apply text-body-20;
+    }
+
+    &-count {
+      @apply font-medium text-primary-500;
+
+      font-size: 40px;
+    }
+
+    &-icon {
+      @apply square-16;
+    }
+  }
+
+  &-simple-table {
+    @apply flex flex-col overflow-hidden px-0;
+
+    &-header {
+      @apply flex items-center space-x-2 px-4;
+    }
+
+    &-icon {
+      @apply square-8;
+    }
+
+    &-label {
+      @apply text-body-20;
+    }
+
+    .table-wrapper {
+      @apply relative mx-0 mt-4 px-0;
+
+      .table {
+        @apply relative;
+
+        border-spacing: 0;
+        margin-top: 0;
+
+        &-header,
+        &-body {
+          &-row {
+            @apply rounded-none shadow-none;
+          }
+        }
+
+        &-header {
+          @apply relative z-20;
+        }
+
+        &-th,
+        &-td {
+          &:first-child {
+            @apply rounded-l-none;
+          }
+          &:last-child {
+            @apply rounded-r-none;
+          }
+        }
+
+        &-th {
+          @apply sticky top-0 z-10 bg-primary-100 text-dark-500;
+        }
+
+        &-body {
+          &-row {
+            @apply relative;
+
+            &::after {
+              @apply absolute bottom-0 left-1/2 -translate-x-1/2 bg-white-800;
+
+              content: '';
+              height: 1px;
+              width: calc(100% - (12px * 2));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dark Mode
+[data-theme='dark'] {
+  .card {
+    @apply bg-dark-400 shadow-lg;
+
+    &-simple-table {
+      .table-wrapper {
+        .table {
+          &-body {
+            &-row {
+              &::after {
+                @apply bg-dark-300;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

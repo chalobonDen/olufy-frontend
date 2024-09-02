@@ -1,0 +1,9 @@
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+
+    @at-root .dark {
+      @apply bg-dark-500 text-white-900;
+    }
+  }
+}

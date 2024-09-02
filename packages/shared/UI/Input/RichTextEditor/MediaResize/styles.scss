@@ -1,0 +1,65 @@
+.node-resizableMedia {
+  @apply pointer-events-none;
+}
+
+.media-node-view {
+  @apply pointer-events-auto relative flex;
+
+  .media-node-container {
+    @apply relative flex w-fit;
+  }
+
+  &.f-left {
+    @apply float-left;
+  }
+
+  &.f-right {
+    @apply float-right;
+  }
+
+  &.align-left {
+    @apply justify-start;
+  }
+
+  &.align-center {
+    @apply justify-center;
+  }
+
+  &.align-right {
+    @apply justify-end;
+  }
+
+  .horizontal-resize-handle,
+  .vertical-resize-handle {
+    @apply absolute z-50 opacity-50 hover:bg-blue-200;
+  }
+
+  .horizontal-resize-handle {
+    @apply right-0 top-0 h-full w-2 cursor-col-resize;
+  }
+
+  .vertical-resize-handle {
+    @apply bottom-0 left-0 h-2 w-full cursor-row-resize;
+  }
+
+  .image-actions-container {
+    @apply flex space-x-2 bg-white-900 shadow-01 p-1;
+
+    .image-action-button {
+      @apply p-2 rounded;
+
+      &:hover {
+        @apply cursor-pointer pointer-events-auto bg-white-600; 
+      }
+    }
+  }
+
+  .media-actions-container {
+    padding: 4px !important;
+    width: fit-content !important;
+
+    .ep-button + .ep-button {
+      margin-left: 0px;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@olufy-frontend/root",
+  "private": true,
+  "scripts": {
+    "build": "lerna run build",
+    "bootstrap": "lerna bootstrap",
+    "lingui": "lerna run lingui",
+    "clean:build": "lerna run clean:build",
+    "dev": "lerna run dev",
+    "dev:user": "lerna run --scope @olufy-frontend/user dev",
+    "dev:admin": "lerna run --scope @olufy-frontend/admin dev",
+    "dev:docs": "lerna run --scope @olufy-frontend/docs dev"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/**"
+    ]
+  },
+  "devDependencies": {
+    "lerna": "^6.6.1"
+  },
+  "dependencies": {}
+}

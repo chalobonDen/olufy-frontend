@@ -1,0 +1,13 @@
+@layer components {
+  .user-cover {
+    @apply relative min-h-[448px] overflow-hidden bg-primary-500 bg-contain bg-center bg-no-repeat py-32 flex items-center;
+
+    @screen lg {
+      @apply py-28 min-h-[380px];
+    }
+
+    @screen sm {
+      @apply py-16 min-h-[260px];
+    }
+  }
+}

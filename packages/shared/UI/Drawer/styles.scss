@@ -1,0 +1,110 @@
+.drawer {
+  @apply relative z-50;
+
+  &.is-not-overlay {
+    @apply pointer-events-none;
+  }
+
+  &-overlay {
+    @apply fixed inset-0 bg-white-900/5 backdrop-blur-sm;
+
+    &-transition-enter {
+      @apply transition duration-300 ease-out;
+    }
+    &-transition-enter-form,
+    &-transition-leave-to {
+      @apply opacity-0;
+    }
+    &-transition-enter-to,
+    &-transition-leave-form {
+      @apply opacity-100;
+    }
+    &-transition-leave {
+      @apply transition duration-200 ease-in;
+    }
+  }
+
+  &-dialog {
+    @apply fixed inset-0 overflow-x-hidden;
+  }
+
+  &-container {
+    @apply flex h-full;
+  }
+
+  &-panel {
+    @apply flex h-full max-w-full transform flex-col overflow-x-hidden bg-white-900 text-left align-middle shadow-01 transition-all;
+
+    width: 320px;
+
+    &.is-not-overlay {
+      @apply pointer-events-auto;
+    }
+
+    .close {
+      @apply absolute right-0 top-0 outline-none;
+
+      .icon {
+        @apply square-6;
+      }
+    }
+  }
+
+  &-transition-enter {
+    // @apply transition duration-200 ease-out;
+  }
+  &-transition-enter-to,
+  &-transition-leave-form {
+    @apply mx-0 opacity-100 #{!important};
+  }
+  &-transition-leave {
+    // @apply transition duration-150 ease-in;
+  }
+
+  &-left {
+    .drawer-container {
+      @apply justify-start;
+    }
+
+    .drawer-panel {
+      @apply -ml-10 opacity-0;
+    }
+
+    // .drawer-transition-enter-form,
+    // .drawer-transition-leave-to {
+    //   @apply -ml-10 opacity-0;
+    // }
+  }
+
+  &-right {
+    .drawer-container {
+      @apply justify-end;
+    }
+
+    .drawer-panel {
+      @apply -mr-10 opacity-0;
+    }
+
+    // .drawer-transition-enter-form,
+    // .drawer-transition-leave-to {
+    //   @apply -mr-3 opacity-0 #{!important};
+    // }
+  }
+
+  &-loader {
+    @apply absolute inset-0 z-50 flex items-center justify-center bg-white-900/50;
+  }
+}
+
+// Dark Mode
+[data-theme='dark'] {
+  .drawer {
+    &-overlay {
+      @apply bg-dark-500/5;
+    }
+
+    &-panel {
+      @apply bg-dark-400;
+    }
+  }
+}

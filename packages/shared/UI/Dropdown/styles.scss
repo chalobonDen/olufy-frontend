@@ -1,0 +1,73 @@
+.dropdown {
+  @apply relative inline-block;
+
+  .dropdown-caret-icon {
+    width: 1em;
+    height: 1em;
+  }
+
+  .dropdown-button {
+    @apply flex items-center space-x-1;
+
+    &:hover {
+      @apply transition-opacity hover:opacity-75;
+    }
+  }
+
+  &-transition-enter {
+    @apply transition duration-200 ease-out;
+  }
+  &-transition-enter-form,
+  &-transition-leave-to {
+    @apply scale-95 opacity-0;
+  }
+  &-transition-enter-to,
+  &-transition-leave-form {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  &-transition-leave {
+    @apply transition duration-150 ease-in;
+  }
+}
+
+.dropdown-divider {
+  @apply my-1 w-full;
+}
+
+.dropdown-dialog {
+  @apply mt-1 w-max scale-95 rounded-lg border border-white-700 bg-white-900 px-2 opacity-0 shadow-01;
+
+  .dropdown-dialog-container {
+    @apply flex flex-col items-start py-2;
+  }
+
+  .dropdown-dialog-item {
+    @apply relative flex min-h-[48px] w-[240px] items-center space-x-3 rounded-lg px-4 py-2;
+
+    &:not(.no-hover):not(.active):hover {
+      @apply bg-white-700/70;
+    }
+
+    &.active {
+      @apply bg-white-700;
+    }
+  }
+}
+
+// Dark Mode
+[data-theme='dark'] {
+  .dropdown-dialog {
+    @apply border-dark-300 bg-dark-400 shadow-02;
+
+    .dropdown-dialog-item {
+      &:not(.no-hover):not(.active):hover {
+        @apply bg-dark-300/70;
+      }
+
+      &.active {
+        @apply bg-dark-300;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.confirm-modal {
+  .confirm-modal-footer {
+    @apply mt-6 flex items-center justify-end space-x-2;
+
+    .button.default {
+      @apply bg-white-600;
+
+      &:hover {
+        @apply bg-white-300;
+      }
+    }
+  }
+}
+
+// Dark Mode
+[data-theme='dark'] {
+  .confirm-modal {
+    .confirm-modal-footer {
+      .button.default {
+        @apply bg-dark-300/60;
+
+        &:hover {
+          @apply bg-dark-300/40;
+        }
+      }
+    }
+  }
+}

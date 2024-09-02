@@ -1,0 +1,247 @@
+@use 'sass:selector';
+
+.table-wrapper {
+  @apply relative -mx-6 -mb-6 overflow-x-auto px-6 pb-6;
+}
+
+.table {
+  @apply w-full;
+
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin-top: -8px;
+
+  &-header,
+  &-body {
+    &-row {
+      @apply rounded-lg shadow-01;
+
+      > * {
+        @apply px-3 align-middle;
+
+        &:first-child {
+          @apply pl-4;
+        }
+
+        &:last-child {
+          @apply pr-4;
+        }
+      }
+    }
+  }
+
+  &-header {
+    &-row {
+      @apply bg-primary-500;
+    }
+
+    .table-th {
+      .checkbox {
+        input {
+          @apply mt-0;
+
+          &[type='checkbox'] {
+            @apply border-white-900;
+
+            &:checked {
+              @apply bg-white-900;
+
+              background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23F44D29' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z'/%3E%3C/svg%3E");
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-body {
+    &-row {
+      @apply bg-white-900;
+    }
+  }
+
+  &-th {
+    @apply bg-primary-500 py-2 text-body-16 text-white-900;
+
+    min-height: 40px;
+
+    &:first-child {
+      @apply rounded-l-lg;
+    }
+    &:last-child {
+      @apply rounded-r-lg;
+    }
+
+    // Filter & Sorting
+    > div {
+      @apply flex w-full items-center justify-between;
+
+      > span:first-child,
+      > .sorter-container {
+        @apply relative flex-1;
+      }
+
+      &.is-sorter {
+        @apply cursor-pointer;
+
+        > .sorter-container {
+          @apply flex items-center justify-between;
+
+          > span:first-child {
+            @apply relative flex-1;
+          }
+        }
+
+        .sort-icon {
+          @apply flex flex-col;
+
+          &.is-asc > svg:first-child {
+            @apply opacity-100;
+          }
+          &.is-desc > svg:last-child {
+            @apply opacity-100;
+          }
+
+          svg {
+            @apply opacity-40;
+
+            &:first-child {
+              @apply -mb-1;
+            }
+            &:last-child {
+              @apply -mt-1;
+            }
+          }
+        }
+      }
+
+      .filter-button {
+        margin-left: 2px;
+
+        button {
+          padding: 5px 3px !important;
+          min-height: auto !important;
+
+          &:hover {
+            @apply bg-dark-500/20;
+          }
+        }
+
+        svg {
+          @apply square-3;
+        }
+      }
+    }
+
+    &[align='center'] {
+      > div {
+        > span:first-child {
+          @apply text-center;
+        }
+      }
+    }
+    &[align='left'] {
+      > div {
+        > span:first-child {
+          @apply text-left;
+        }
+      }
+    }
+    &[align='right'] {
+      > div {
+        > span:first-child {
+          @apply text-right;
+        }
+      }
+    }
+  }
+
+  &-td {
+    @apply py-4;
+
+    &:first-child {
+      @apply rounded-l-lg;
+    }
+    &:last-child {
+      @apply rounded-r-lg;
+    }
+  }
+
+  &.has-scroll-body {
+    .table-header {
+      padding-right: 6px;
+    }
+  }
+}
+
+.table-filter-dialog {
+  @apply cursor-default text-dark-500;
+
+  @at-root .dark & {
+    @apply text-white-900;
+  }
+
+  .dropdown-dialog-item {
+    @apply px-2 py-1 text-body-14;
+
+    min-height: auto;
+    width: auto;
+    min-width: 170px;
+  }
+
+  .filter-footer-buttons {
+    @apply flex w-full items-center justify-between;
+
+    .button {
+      @apply px-2 py-1 #{!important};
+
+      min-height: auto;
+    }
+
+    .button.default {
+      @apply bg-white-600;
+
+      &:hover {
+        @apply bg-white-300;
+      }
+    }
+
+    @at-root .dark & {
+      .button.default {
+        @apply bg-dark-300/60;
+
+        &:hover {
+          @apply bg-dark-300/40;
+        }
+      }
+    }
+  }
+
+  .dropdown-divider {
+    @apply my-1;
+  }
+}
+
+.table-loader {
+  @apply absolute inset-0 flex items-center justify-center bg-white-900/50;
+}
+
+.table-td-empty {
+  > div {
+    @apply w-full py-10 text-center;
+  }
+}
+
+[data-theme='dark'] {
+  .table {
+    &-body {
+      &-row {
+        @apply bg-dark-400;
+      }
+    }
+  }
+
+  .table-loader {
+    @apply bg-dark-500/50;
+  }
+}

@@ -1,0 +1,81 @@
+.document-wrapper {
+  @apply flex flex-1 flex-col items-center justify-center space-y-4 p-4;
+
+  z-index: 500;
+
+  .react-pdf__Document {
+    @apply relative shadow-01;
+
+    &.previous-document {
+      canvas {
+        @apply opacity-50;
+      }
+    }
+
+    &.rendering-document {
+      @apply absolute;
+
+      .react-pdf__Page {
+        @apply shadow-none;
+      }
+    }
+
+    .react-pdf__Page__textContent {
+      @apply absolute left-0 top-0;
+    }
+  }
+
+  .document-navigation {
+    @apply z-50 flex items-center space-x-2 text-body-18;
+
+    &-prev,
+    &-next {
+      &:disabled {
+        @apply cursor-not-allowed opacity-50;
+      }
+    }
+  }
+}
+
+@media print {
+  .backoffice-sidebar-overlay,
+  .backoffice-sidebar,
+  .backoffice-navbar {
+    @apply hidden;
+  }
+
+  .backoffice-layout {
+    height: auto !important;
+  }
+
+  .backoffice-content {
+    @apply block;
+
+    main {
+      @apply p-0;
+    }
+  }
+
+  button {
+    @apply hidden #{!important};
+  }
+
+  canvas {
+    width: 210mm !important;
+    height: 296.8mm !important;
+    max-height: 296.8mm !important;
+  }
+
+  .document-wrapper {
+    @apply p-0;
+  }
+
+  .no-print {
+    @apply hidden;
+  }
+
+  @page {
+    size: A4;
+    margin: 0 !important;
+  }
+}

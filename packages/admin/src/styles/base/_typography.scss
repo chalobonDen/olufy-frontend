@@ -1,0 +1,26 @@
+@layer base {
+  html {
+    body {
+      @apply font-kanit font-normal;
+    }
+  }
+
+  p {
+    @apply font-light;
+  }
+
+  strong {
+    @apply font-medium;
+  }
+
+  .desc {
+    @apply text-dark-200;
+  }
+
+  // Dark Mode
+  [data-theme='dark'] {
+    .desc {
+      @apply text-white-800;
+    }
+  }
+}

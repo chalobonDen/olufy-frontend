@@ -1,0 +1,47 @@
+.switch {
+  @apply relative inline-flex h-6 w-11 items-center rounded-full bg-white-500;
+
+  &.active {
+    .switch-dot {
+      @apply translate-x-6;
+    }
+
+    &.primary {
+      @apply bg-primary-500 #{!important};
+    }
+    &.success {
+      @apply bg-success #{!important};
+    }
+    &.error {
+      @apply bg-error #{!important};
+    }
+    &.danger {
+      @apply bg-red-500 #{!important};
+    }
+    &.info {
+      @apply bg-info #{!important};
+    }
+    &.warning {
+      @apply bg-warning #{!important};
+    }
+  }
+
+  .switch-dot {
+    @apply inline-block h-4 w-4 translate-x-1 transform rounded-full bg-white-900 transition;
+  }
+
+  &-label {
+    @apply flex-1;
+  }
+}
+
+.switch-container {
+  @apply space-x-2 flex text-start items-start;
+}
+
+// Dark Mode
+[data-theme='dark'] {
+  .switch {
+    @apply bg-dark-200;
+  }
+}

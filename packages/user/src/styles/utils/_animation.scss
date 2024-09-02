@@ -1,0 +1,16 @@
+.anim-slider-loop {
+  animation-name: slider_loop;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+}
+
+@keyframes slider_loop {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

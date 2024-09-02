@@ -1,0 +1,98 @@
+export const documentProps = {
+  title: 'Project Structure',
+  description: 'การสร้าง File และ Directory ให้เป็นไปตามโครงสร้างสำหรับโปรเจคนี้'
+}
+
+## Root
+
+Write something...
+
+```null title="Root"
+├── .github/
+├── .vscode/
+├── packages/
+│   ├── admin/
+│   ├── docs/
+│   ├── shared/
+│   └── user/
+├── .gitignore
+├── .admin.Dockerfile
+├── env-example
+├── lerna.json
+├── package.json
+├── README.md
+├── user.Dockerfile
+└── yarn.lock
+```
+
+## User & Admin
+
+โครงสร้างการเขียนทั้ง ***user*** และ ***admin*** จะถูกวางไว้เหมือนกัน แต่จะมีในส่วนของ `i18n` ที่ทำให้ในส่วนของ routes ต่างกัน
+เพราะในส่วนของ ***user*** จะมี `[lang]` แต่ในฝั่งของ ***admin*** จะไม่มี ซึ่งเหตุผลตรงนี้คือการที่ฝั่ง ***user*** ต้องทำ SEO แต่ในฝั่ง ***admin*** นั้นไม่จำเป็นต้องทำ
+
+```null title="packages/admin & packages/user"
+├── public/
+├── src/
+│   ├── ...
+│   └── ...
+├── .babelrc
+├── .eslintignore
+├── .eslintrc.cjs
+├── .gitignore
+├── lingui.config.ts
+├── package.json
+├── postcss.config.cjs
+├── prettier.config.cjs
+├── tailwind.config.cjs
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.cts
+```
+
+## Shared
+
+Something...
+
+```null title="packages/shared"
+├── assets/
+├── hooks/
+├── layouts/
+├── presets/
+├── public/
+├── services/
+├── styles/
+├── types/
+├── UI/
+├── utils/
+├── .eslintignore
+├── .eslintrc.cjs
+├── .gitignore
+├── index.d.ts
+├── package.json
+├── postcss.config.cjs
+├── prettier.config.cjs
+├── tailwind.config.cjs
+├── tsconfig.json
+└── tsconfig.node.json
+```
+
+## Docs
+
+จะมีความคล้ายคลึงกับ ***user*** หรือ ***admin*** 
+
+```null title="packages/docs"
+├── public
+├── src/
+│   ├── ...
+│   └── ...
+├── .eslintignore
+├── .eslintrc.cjs
+├── .gitignore
+├── package.json
+├── postcss.config.cjs
+├── prettier.config.cjs
+├── tailwind.config.cjs
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```

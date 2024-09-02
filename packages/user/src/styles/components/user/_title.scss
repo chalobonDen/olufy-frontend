@@ -1,0 +1,9 @@
+@layer components {
+  .user-title {
+    @apply text-header-2;
+
+    @screen md {
+      font-size: 26px;
+    }
+  }
+}

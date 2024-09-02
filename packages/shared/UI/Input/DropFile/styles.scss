@@ -1,0 +1,165 @@
+.input-dropfile {
+  @apply relative z-0 cursor-pointer;
+
+  &-container {
+    @apply relative z-30 flex h-full w-full items-center justify-center text-center;
+  }
+
+  &-text {
+    &.is-invalid {
+      @apply text-error;
+    }
+  }
+
+  &-preview {
+    @apply pointer-events-none absolute inset-0 z-10;
+
+    img {
+      @apply h-full w-full object-cover object-center;
+    }
+  }
+
+  &-overlay {
+    @apply pointer-events-none absolute inset-0 z-20 bg-dark-500/70;
+  }
+}
+
+.input-dropfile-form-wrapper {
+  @apply relative;
+}
+
+.input-dropfile-form {
+  @apply relative z-0 flex h-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-primary-500/50 text-center;
+
+  &.is-invalid {
+    @apply border-error bg-error/5;
+  }
+
+  &-info {
+    @apply relative z-30 flex flex-col items-center;
+
+    &.has-overlay {
+      @apply text-white-900;
+    }
+  }
+
+  &-icon {
+    @apply square-10;
+  }
+
+  &-text {
+    @apply inline-block;
+
+    &:last-of-type {
+      @apply text-primary-500;
+    }
+  }
+
+  &-preview {
+    @apply pointer-events-none absolute inset-0 z-10;
+
+    img {
+      @apply h-full w-full object-contain object-center;
+
+      &.contain {
+        @apply object-contain;
+      }
+
+      &.cover {
+        @apply object-cover;
+      }
+    }
+  }
+
+  &-action {
+    @apply cursor-pointer rounded-lg;
+
+    > svg {
+      @apply text-white-900 square-8;
+    }
+
+    &:hover {
+      @apply opacity-50;
+    }
+  }
+
+  &-actions {
+    @apply absolute right-2 top-2 z-20 flex items-center space-x-3;
+  }
+}
+
+.preview-modal {
+  @apply overflow-hidden;
+
+  .input-dropfile-form-preview {
+    @apply relative flex h-full items-center justify-center pt-6;
+
+    img {
+      @apply h-auto max-h-full w-auto max-w-full;
+    }
+  }
+}
+
+.input-dropfile-multiple-wrapper {
+  @apply flex flex-wrap gap-2;
+
+  .input-dropfile-multiple-item {
+    @apply flex cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-white-300 bg-white-600;
+
+    width: 160px;
+    height: 160px;
+
+    svg {
+      @apply text-dark-200 square-6;
+    }
+
+    span {
+      @apply mt-2 text-body-14 text-primary-500;
+    }
+
+    &.is-preview {
+      @apply relative cursor-default overflow-hidden border-solid bg-transparent;
+
+      img {
+        @apply h-full w-full object-contain;
+      }
+
+      .input-dropfile-multiple-item-actions {
+        @apply pointer-events-none absolute inset-0 flex items-center justify-center space-x-3 bg-dark-200/60 opacity-0 transition-opacity;
+      }
+
+      &:hover {
+        .input-dropfile-multiple-item-actions {
+          @apply pointer-events-auto opacity-100;
+
+          svg {
+            @apply text-white-900;
+          }
+        }
+      }
+    }
+  }
+}
+
+// _DARK MODE
+[data-theme='dark'] {
+  .input-dropfile-form {
+    @apply bg-dark-500;
+  }
+
+  .input-dropfile-multiple-wrapper {
+    .input-dropfile-multiple-item {
+      @apply border-primary-500/50 bg-dark-500;
+
+      svg {
+        @apply text-white-400;
+      }
+
+      &.is-preview {
+        .input-dropfile-multiple-item-actions {
+          @apply bg-dark-500/60;
+        }
+      }
+    }
+  }
+}

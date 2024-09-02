@@ -1,0 +1,78 @@
+@layer base {
+  html {
+    body {
+      @apply text-dark-500;
+    }
+
+    &[data-theme='dark'] {
+      @apply bg-dark-500;
+
+      body {
+        @apply text-white-900;
+      }
+    }
+  }
+
+  main {
+    @apply translate-y-0 transition-all duration-200 will-change-transform;
+  }
+
+  button,
+  a {
+    @apply outline-none;
+  }
+
+  section,
+  .main-space-x {
+    @apply px-16;
+
+    @screen 2xl {
+      @apply px-12;
+    }
+
+    @screen sm {
+      @apply px-4;
+    }
+  }
+
+  .replace-main-space-x {
+    @apply -mx-16;
+
+    @screen 2xl {
+      @apply -mx-12;
+    }
+
+    @screen sm {
+      @apply -mx-4;
+    }
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: hsla(0, 0%, 100%, 0);
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: theme('colors.white.700');
+    border-radius: 4px;
+  }
+
+  [data-theme='dark'] {
+    *::-webkit-scrollbar-thumb {
+      background-color: theme('colors.dark.300');
+    }
+  }
+
+  // TODO: มีปัญหากับหน้าที่ความสูงไม่มากเลยปิดไปก่อนครับ
+  // &[data-scroll='down'] {
+  //   main,
+  //   footer {
+  //     @apply translate-y-[-45px];
+  //   }
+  // }
+}

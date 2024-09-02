@@ -1,0 +1,100 @@
+@use 'sass:selector';
+
+.ProseMirror {
+  > * + * {
+    margin-top: 0.75em;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.15rem;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.1;
+  }
+
+  code {
+    background-color: theme('colors.dark.500 / 10%');
+    color: theme('colors.dark.500');
+    padding: 0 0.5rem;
+
+    @at-root .dark & {
+      background-color: theme('colors.white.900 / 10%');
+      color: theme('colors.white.500');
+    }
+  }
+
+  pre {
+    background: #0d0d0d;
+    color: #fff;
+    font-family: 'JetBrainsMono', monospace;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+
+    code {
+      color: inherit;
+      padding: 0;
+      background: none;
+      font-size: 0.8rem;
+    }
+  }
+
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  blockquote {
+    padding-left: 1rem;
+    border-left: 2px solid rgba(#0d0d0d, 0.1);
+  }
+
+  hr {
+    border: none;
+    border-top: 2px solid rgba(#0d0d0d, 0.1);
+    margin: 2rem 0;
+  }
+
+  h1 {
+    @apply text-header-1;
+  }
+
+  h2 {
+    @apply text-header-2;
+  }
+
+  h3 {
+    @apply text-header-3;
+  }
+
+  a {
+    @apply cursor-pointer underline;
+
+    &:hover {
+      @apply opacity-70;
+    }
+  }
+
+  p > span,
+  p {
+    @apply text-dark-500 #{!important};
+
+    @at-root .dark & {
+      @apply text-white-300 #{!important};
+    }
+  }
+}

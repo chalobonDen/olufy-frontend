@@ -1,0 +1,26 @@
+@import '@fontsource/kanit/300.css';
+@import '@fontsource/kanit/400.css';
+@import '@fontsource/kanit/500.css';
+@import '@fontsource/kanit/600.css';
+
+// Swiper
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+
+@tailwind base;
+@import './base/root';
+@import './base/layout';
+@import './base/typography';
+
+@tailwind components;
+@import './components/user/container';
+@import './components/user/card';
+@import './components/user/title';
+@import './components/user/cover';
+@import './components/swiper';
+@import './components/user/cookie-consent';
+@import './components/placeholder';
+@import './components/user/print-template';
+
+@tailwind utilities;
+@import './utils/animation';

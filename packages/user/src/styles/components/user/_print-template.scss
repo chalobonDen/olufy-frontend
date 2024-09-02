@@ -1,0 +1,258 @@
+.invoice-container {
+  margin: 0 auto;
+  width: 210mm;
+  font-size: 14px;
+
+  section {
+    @apply mt-2 p-0;
+  }
+
+  .tax-invoice {
+    color: #2c97ce;
+
+    .triangle {
+      &:after {
+        border-color: transparent #2c97ce transparent transparent;
+      }
+    }
+  }
+
+  .invoice-page {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 0.5in;
+    position: relative;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    height: 296.8mm;
+    max-height: 296.8mm;
+    margin: 20px auto;
+  }
+
+  .triangle {
+    &:after {
+      border: medium solid transparent;
+      bottom: 100%;
+      content: ' ';
+      height: 0;
+      position: absolute;
+      right: 0.05in;
+      top: 0.05in;
+      border-style: solid;
+      border-width: 0 65px 70px 0;
+      width: 0;
+    }
+  }
+
+  .invoice-header {
+    .invoice {
+      &-logo {
+        max-width: 300px;
+        max-height: 75px !important;
+        @apply ml-5;
+      }
+
+      &-company {
+        li {
+          @apply pl-2;
+        }
+
+        @apply mb-2 mt-3 text-dark-500;
+      }
+
+      &-company-section {
+        max-width: 350px;
+        @apply ml-2 inline-block;
+      }
+
+      &-customer {
+        li {
+          &:first-of-type {
+            color: #2c97ce;
+            margin-bottom: 8px;
+          }
+          @apply pl-2;
+        }
+
+        @apply mb-2 mt-3 text-dark-500;
+      }
+
+      &-customer-section {
+        max-width: 350px;
+        @apply ml-2 inline-block;
+      }
+
+      &-title {
+        p {
+          @apply text-body-18;
+        }
+        @apply float-right w-[250px] pb-2 text-center text-body-24;
+      }
+
+      &-info {
+        width: 300px;
+        div {
+          @apply inline-flex;
+        }
+
+        .title-info {
+          vertical-align: top;
+          @apply w-24;
+        }
+
+        .detail-info {
+          @apply max-w-[155px] break-words text-dark-500;
+        }
+        @apply float-right mr-2 border-t border-white-300 pl-5 pt-2;
+      }
+
+      &-details {
+        width: 300px;
+        div {
+          @apply inline-flex;
+        }
+
+        .title-info {
+          vertical-align: top;
+          @apply w-24;
+        }
+
+        .detail-info {
+          @apply max-w-[155px] break-words text-dark-500;
+        }
+        @apply float-right mr-2 mt-2 border-t border-white-300 pl-5 pt-2;
+      }
+    }
+
+    @apply flex;
+  }
+
+  .invoice-product {
+    .products-table {
+      .products-table-header {
+        tr {
+          border-top: 1px solid #d5d5d5;
+          border-bottom: 1px solid #d5d5d5;
+        }
+
+        th {
+          padding: 8px 4px;
+          vertical-align: middle;
+
+          &:nth-child(1) {
+            min-width: 30px;
+          }
+          &:nth-child(3) {
+            min-width: 50px;
+          }
+          &:nth-child(4) {
+            min-width: 140px;
+          }
+          &:nth-child(5) {
+            min-width: 80px;
+          }
+          &:nth-child(6) {
+            min-width: 100px;
+          }
+
+          @apply text-body-14;
+        }
+      }
+
+      .product-items {
+        tr {
+          border-bottom: 1px solid #d5d5d5;
+          @apply px-1 py-2;
+        }
+
+        td {
+          padding: 8px 4px;
+          &:nth-of-type(1) {
+            @apply text-center;
+          }
+          &:nth-of-type(2) {
+            @apply text-left;
+          }
+          @apply text-right text-body-14;
+        }
+      }
+      @apply h-10 w-full min-w-full;
+    }
+    @apply mt-2 text-dark-500;
+  }
+
+  .invoice-summary {
+    .text-word-price {
+      vertical-align: bottom;
+      @apply text-dark-500;
+    }
+
+    .summary-table {
+      width: 100%;
+    }
+    @apply mt-2 p-0;
+  }
+
+  .invoice-remark {
+    li {
+      &:first-of-type {
+        color: #2c97ce;
+        margin-bottom: 8px;
+      }
+      &:nth-child(6) {
+        @apply mt-5;
+      }
+      @apply pl-2;
+    }
+
+    &-remark-section {
+      max-width: 350px;
+      @apply ml-2 inline-block;
+    }
+    @apply mb-2 mt-3 text-dark-500;
+  }
+
+  .invoice-signature {
+    position: absolute;
+    bottom: 30px;
+    width: 88%;
+
+    @apply mt-3 text-dark-500;
+  }
+}
+
+/* PRINT */
+@media print {
+  .backoffice-sidebar-overlay,
+  .backoffice-sidebar,
+  .backoffice-navbar {
+    @apply hidden;
+  }
+
+  .backoffice-layout {
+    height: auto !important;
+  }
+
+  .backoffice-content {
+    @apply block;
+
+    main {
+      @apply p-0;
+    }
+  }
+
+  .invoice-container {
+    .invoice-page {
+      margin: 0;
+    }
+    @apply w-auto shadow-none;
+  }
+
+  .button-continue {
+    @apply hidden
+  }
+
+  @page {
+    size: A4;
+    margin: 0 !important;
+  }
+}

@@ -1,0 +1,96 @@
+@import 'react-datepicker/dist/react-datepicker.css';
+
+.react-datepicker-popper {
+  @apply pt-2 z-50 #{!important};
+
+  * {
+    @apply font-kanit;
+  }
+
+  .react-datepicker {
+    @apply border-white-700 shadow-01;
+
+    .react-datepicker__triangle {
+      @apply hidden;
+    }
+
+    .react-datepicker__header {
+      @apply border-b-white-700 bg-white-600 text-body-16;
+    }
+
+    .react-datepicker__current-month {
+      font-size: 18px;
+    }
+  }
+
+  .react-datepicker__day--selected,
+  .react-datepicker__day--in-selecting-range,
+  .react-datepicker__day--in-range,
+  .react-datepicker__month-text--selected,
+  .react-datepicker__month-text--in-selecting-range,
+  .react-datepicker__month-text--in-range,
+  .react-datepicker__quarter-text--selected,
+  .react-datepicker__quarter-text--in-selecting-range,
+  .react-datepicker__quarter-text--in-range,
+  .react-datepicker__year-text--selected,
+  .react-datepicker__year-text--in-selecting-range,
+  .react-datepicker__year-text--in-range {
+    @apply bg-primary-500;
+  }
+
+  .react-datepicker__day,
+  .react-datepicker__month-text,
+  .react-datepicker__quarter-text,
+  .react-datepicker__year-text {
+    @apply border border-transparent font-light;
+
+    border-radius: 0.3rem;
+    font-size: 14px;
+  }
+  .react-datepicker__day--today,
+  .react-datepicker__month-text--today,
+  .react-datepicker__quarter-text--today,
+  .react-datepicker__year-text--today {
+    @apply border border-primary-500 font-bold;
+  }
+
+  .react-datepicker__navigation-icon {
+    @apply top-1/2 -translate-y-1/2;
+  }
+
+  .react-datepicker__year-read-view--down-arrow,
+  .react-datepicker__month-read-view--down-arrow,
+  .react-datepicker__month-year-read-view--down-arrow,
+  .react-datepicker__navigation-icon::before {
+    top: 10px;
+  }
+
+  .react-datepicker__day--disabled {
+    @apply cursor-not-allowed;
+  }
+
+  .react-datepicker__day--outside-month:not(.react-datepicker__day--disabled) {
+    @apply text-dark-200/70;
+  }
+
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    width: 2rem;
+    line-height: 2rem;
+  }
+
+  /* NOTE: เอาสีพื้นหลังออกก่อนเดี๋ยวจะงง */
+  .react-datepicker__day--keyboard-selected,
+  .react-datepicker__month-text--keyboard-selected,
+  .react-datepicker__quarter-text--keyboard-selected,
+  .react-datepicker__year-text--keyboard-selected {
+    @apply bg-transparent;
+  }
+}
+
+.input {
+  .datepicker-icon {
+    @apply square-6 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none;
+  }
+}

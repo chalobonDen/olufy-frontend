@@ -1,0 +1,7 @@
+.checkbox {
+  @apply flex cursor-pointer items-start space-x-2;
+
+  input {
+    @apply text-primary-500 mt-1 cursor-pointer;
+  }
+}

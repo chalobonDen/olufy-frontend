@@ -1,0 +1,77 @@
+.modal {
+  /* Preview Modal | Lightbox */
+  &.preview-modal {
+    .modal-dialog-panel {
+      @apply overflow-hidden bg-dark-500/70;
+
+      .modal-dialog-header .close {
+        @apply z-50 text-white-900 hover:opacity-60;
+      }
+    }
+
+    .modal-dialog-content {
+      @apply h-full pb-16 pt-12;
+
+      .preview-modal-images {
+        @apply relative z-0 flex h-full items-center justify-center;
+
+        img {
+          @apply absolute h-auto max-h-full w-auto max-w-full will-change-transform;
+        }
+      }
+
+      @screen se {
+        @apply px-3;
+      }
+    }
+
+    .preview-modal-info {
+      @apply absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-white-900;
+
+      @screen sm {
+        @apply bottom-4;
+      }
+    }
+
+    .preview-modal-navigation {
+      @apply pointer-events-none absolute inset-0 z-10;
+
+      .next,
+      .prev {
+        @apply pointer-events-auto absolute top-1/2 z-50 -translate-y-1/2 cursor-pointer text-4xl text-white-900 hover:opacity-60;
+
+        filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 0.3));
+      }
+
+      .next {
+        @apply right-4;
+      }
+
+      .prev {
+        @apply left-4;
+      }
+
+      @screen sm {
+        .next,
+        .prev {
+          @apply bottom-4 top-auto translate-y-0;
+        }
+      }
+
+      @screen se {
+        .next,
+        .prev {
+          @apply bottom-2;
+        }
+
+        .next {
+          @apply right-3;
+        }
+
+        .prev {
+          @apply left-3;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,147 @@
+.modal {
+  @apply relative z-50;
+
+  &-overlay {
+    @apply fixed inset-0 bg-dark-500/20 backdrop-blur-sm;
+  }
+
+  &-dialog {
+    @apply fixed inset-0 overflow-y-auto;
+
+    &-wrapper {
+      @apply flex min-h-full items-center justify-center py-10 text-center;
+    }
+
+    &-container {
+      @apply max-w-full;
+    }
+
+    &-panel {
+      @apply flex max-w-full transform flex-col rounded-2xl bg-white-900 text-left align-middle shadow-01 transition-all will-change-transform;
+    }
+
+    &-content {
+      @apply flex flex-1 flex-col px-8 pb-6;
+
+      @screen sm {
+        @apply px-4 pb-4;
+      }
+
+      &-title {
+        @apply px-8 pb-4 pt-6;
+
+        h3 {
+          @apply text-header-3;
+        }
+
+        @screen sm {
+          @apply px-4 pt-4;
+
+          h3 {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+
+    .close {
+      @apply absolute right-6 top-6 outline-none;
+
+      @screen sm {
+        @apply right-4 top-4;
+      }
+
+      .icon {
+        @apply square-6;
+      }
+    }
+
+    // Condition of fullscreen mode or mobile mode
+    &.is-no-desktop-fullscreen {
+      .modal-dialog-panel {
+        @apply w-[547px];
+
+        &.modal-dialog-small {
+          @apply w-[460px];
+        }
+
+        &.modal-dialog-big {
+          @apply w-[1148px];
+        }
+      }
+    }
+
+    &.is-desktop-fullscreen {
+      .modal-dialog-wrapper {
+        @apply h-full p-0;
+      }
+
+      .modal-dialog-container {
+        @apply h-full w-full overflow-x-hidden;
+      }
+
+      .modal-dialog-panel {
+        @apply h-full w-full rounded-none;
+      }
+    }
+
+    &.is-mobile-fullscreen {
+      @screen sm {
+        @apply overflow-hidden;
+
+        .modal-dialog-wrapper {
+          @apply h-full p-0;
+        }
+
+        .modal-dialog-container {
+          @apply h-full;
+        }
+
+        .modal-dialog-panel {
+          @apply h-full overflow-hidden rounded-none;
+
+          .modal-dialog-content {
+            @apply h-full overflow-x-hidden pt-4;
+          }
+
+          .modal-footer {
+            @apply fixed bottom-0 left-0 w-full bg-white-900 p-4 shadow-01;
+          }
+
+          .modal-dialog-content-title {
+            @apply shadow-01;
+          }
+        }
+      }
+    }
+
+    &.is-default {
+      .modal-dialog-wrapper {
+        @apply p-4;
+      }
+    }
+  }
+
+  &-loader {
+    @apply absolute inset-0 z-50 flex items-center justify-center bg-white-900/50;
+  }
+}
+
+// Dark Mode
+[data-theme='dark'] {
+  .modal {
+    &-overlay {
+      @apply bg-dark-500/70;
+    }
+
+    &-dialog {
+      &-panel {
+        @apply bg-dark-400 shadow-lg;
+      }
+    }
+
+     &-loader {
+      @apply bg-dark-500/50;
+    }
+  }
+}

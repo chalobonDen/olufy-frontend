@@ -1,0 +1,31 @@
+export const documentProps = {
+  title: 'Introduction',
+  description: 'Olufy Frontend (React + Vite + vite-plugin-ssr + TypeScript)',
+}
+
+โปรเจคนี้เขียนด้วย [React](https://react.dev/) ซึ่งเป็น UI Framework ที่มี community เยอะประมาณนึง
+และอีกทั้งรูปแบบการเขียนเป็น function ทำให้เวลาเขียนออกมาดูอ่านง่าย และเป็นไปในทิศทางเดียวกัน
+
+เราใช้ [Vite](https://vitejs.dev/) ในการทำ runtime ในส่วนของการ run development และการ compile code
+แต่ว่าตัว React นั้นเป็น CSR (Client side rendering) แต่ตัวโปรเจคนี้ต้องการทำในเรื่องของ SEO เข้ามาเกี่ยวข้องด้วย
+จึงต้องมี plugin ในการทำ SSR (Server side rendering) ซึ่งตัวที่เราใช้จะเป็น plugin สำหรับ Vite ซึ่งก็คือ `vite-plugin-ssr`
+ซึ่งตั้งแต่ version `0.4.142` เป็นต้นไป เขาได้ทำการเปลี่ยนชื่อเป็น [Vike](https://vike.dev/) แต่ในโปรเจคที่เราใช้นี้จะเป็น version `0.4.127`
+
+และ เรายังใช้ TypeScript เข้ามาช่วยลดการเขียนที่อาจจะทำให้เกิด Bug หรือแม้กระทั่งการกลับมา maintain ในอานาคตได้อีกด้วย แถมยังช่วยให้ pattern
+การเขียน code ในโปรเจคนี้เป็นไปในทิศทางเดียวกัน
+
+```json title="ตัวอย่าง package.json คร่าวๆ" showLineNumbers
+{
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    ...
+  },
+  "devDependencies": {
+    "typescript": "^4.9.3",
+    "vite": "^4.3.8",
+    "vite-plugin-ssr": "^0.4.127",
+    ...
+  }
+}
+```
